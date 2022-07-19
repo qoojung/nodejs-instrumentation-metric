@@ -32,6 +32,7 @@ module.exports = ({ metricPath = '/metrics' } = {}) => {
       if (req.route && req.route.path === metricPath) {
         return;
       }
+      if (!req.route) return;
       const pathPattern = `${req.baseUrl}${req.route.path}`;
       // observe values.
       responseTimeHisto.labels(req.method, pathPattern).observe(time);
