@@ -2,7 +2,7 @@ const express = require('express');
 const { installMetricHandler, metricMiddleware } = require('./metric')();
 
 const app = express();
-const port = 3000;
+const port = process.env.port || 9898;
 app.use(metricMiddleware);
 
 app.get('/', (req, res) => {
